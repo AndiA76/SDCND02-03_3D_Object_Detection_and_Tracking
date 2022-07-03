@@ -20,18 +20,18 @@ Also, the project code contains various tasks, which are detailed step-by-step i
 📦project<br>
  ┣ 📂dataset --> contains the Waymo Open Dataset sequences <br>
  ┃<br>
- ┣ 📂img<br> --> contains result plots and images to be displayed in the readme.md or writeup.md
+ ┣ 📂img --> contains result plots and images to be displayed in the readme.md or writeup.md <br>
  ┃<br>
  ┣ 📂misc<br>
- ┃ ┣ evaluation.py --> plot functions for tracking visualization and RMSE calculation<br>
- ┃ ┣ helpers.py --> misc. helper functions, e.g. for loading / saving binary files<br>
- ┃ ┗ objdet_tools.py --> object detection functions without student tasks<br>
- ┃ ┗ params.py --> parameter file for the tracking part<br>
+ ┃ ┣ evaluation.py --> plot functions for tracking visualization and RMSE calculation <br>
+ ┃ ┣ helpers.py --> misc. helper functions, e.g. for loading / saving binary files <br>
+ ┃ ┗ objdet_tools.py --> object detection functions without student tasks <br>
+ ┃ ┗ params.py --> parameter file for the tracking part <br>
  ┃ <br>
- ┣ 📂results --> binary files with pre-computed intermediate results and result output<br>
+ ┣ 📂results --> binary files with pre-computed intermediate results and result output <br>
  ┃ <br>
  ┣ 📂student <br>
- ┃ ┣ association.py --> data association logic for assigning measurements to tracks incl. student tasks <br>
+ ┃ ┣ association.py --> data association logic for assigning measurements to tracks incl. student tasks  <br>
  ┃ ┣ filter.py --> extended Kalman filter implementation incl. student tasks <br>
  ┃ ┣ measurements.py --> sensor and measurement classes for camera and lidar incl. student tasks <br>
  ┃ ┣ objdet_detect.py --> model-based object detection incl. student tasks <br>
@@ -39,26 +39,30 @@ Also, the project code contains various tasks, which are detailed step-by-step i
  ┃ ┣ objdet_pcl.py --> point-cloud functions, e.g. for birds-eye view incl. student tasks <br>
  ┃ ┗ trackmanagement.py --> track and track management classes incl. student tasks  <br>
  ┃ <br>
- ┣ 📂tools --> external tools<br>
- ┃ ┣ 📂objdet_models --> models for object detection<br>
+ ┣ 📂tools --> external tools <br>
+ ┃ ┣ 📂objdet_models --> models for object detection <br>
  ┃ ┃ ┃<br>
- ┃ ┃ ┣ 📂darknet<br>
- ┃ ┃ ┃ ┣ 📂config<br>
- ┃ ┃ ┃ ┣ 📂models --> darknet / yolo model class and tools<br>
- ┃ ┃ ┃ ┣ 📂pretrained --> copy pre-trained model file here<br>
- ┃ ┃ ┃ ┃ ┗ complex_yolov4_mse_loss.pth<br>
- ┃ ┃ ┃ ┣ 📂utils --> various helper functions<br>
+ ┃ ┃ ┣ 📂darknet <br>
+ ┃ ┃ ┃ ┣ 📂config --> complex_yolov4.cfg <br>
+ ┃ ┃ ┃ ┣ 📂models --> darknet / yolo model class and tools <br>
+ ┃ ┃ ┃ ┣ 📂pretrained --> copy pre-trained model file here <br>
+ ┃ ┃ ┃ ┃ ┗ complex_yolov4_mse_loss.pth <br>
+ ┃ ┃ ┃ ┣ 📂utils --> various helper functions <br>
  ┃ ┃ ┃<br>
  ┃ ┃ ┗ 📂resnet<br>
- ┃ ┃ ┃ ┣ 📂models --> fpn_resnet model class and tools<br>
+ ┃ ┃ ┃ ┣ 📂models --> fpn_resnet model class and tools <br>
  ┃ ┃ ┃ ┣ 📂pretrained --> copy pre-trained model file here <br>
  ┃ ┃ ┃ ┃ ┗ fpn_resnet_18_epoch_300.pth <br>
- ┃ ┃ ┃ ┣ 📂utils --> various helper functions<br>
+ ┃ ┃ ┃ ┣ 📂utils --> various helper functions <br>
  ┃ ┃ ┃<br>
- ┃ ┗ 📂waymo_reader --> functions for light-weight loading of Waymo sequences<br>
+ ┃ ┗ 📂waymo_reader --> functions for light-weight loading of Waymo sequences <br>
  ┃<br>
- ┣ basic_loop.py<br>
- ┣ loop_over_dataset.py<br>
+ ┣ CODEOWNERS <br>
+ ┣ LICENSE.md <br>
+ ┣ loop_over_dataset.py <br>
+ ┣ README.md <br>
+ ┣ requirements.txt <br>
+ ┗ writeup.md <br>
 
 ## Project Code Structure
 
