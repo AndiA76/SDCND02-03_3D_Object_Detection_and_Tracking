@@ -6,14 +6,16 @@ In this project, you'll fuse measurements from LiDAR and camera and track vehicl
 <img src="img/img_title_1.jpeg"/>
 
 The project consists of two major parts: 
-1. **Object detection**: In this part, a deep-learning approach is used to detect vehicles in LiDAR data based on a birds-eye view perspective of the 3D point-cloud. Also, a series of performance measures is used to evaluate the performance of the detection approach. 
-2. **Object tracking** : In this part, an extended Kalman filter is used to track vehicles over time, based on the lidar detections fused with camera detections. Data association and track management are implemented as well.
+1. **3D Object detection**: In this part, a deep-learning approach is used to detect vehicles in LiDAR data based on a birds-eye view perspective of the 3D point-cloud. Also, a series of performance measures is used to evaluate the performance of the detection approach. 
+2. **3D Single- and Multi-Object tracking** : In this part, an extended Kalman filter is used to track vehicles over time, based on the lidar detections fused with camera detections. Data association and track management are implemented as well.
 
-The following diagram contains an outline of the data flow and of the individual steps that make up the algorithm. 
+## Project Code Structure
 
-<img src="img/img_title_2_new.png"/>
+The following diagram contains an outline of the data flow and of the individual steps that make up the overall object detection and tracking algorithm using Lidar and camera measurements and an extended Kalman Filter with a constant velocity model as an inner model representing the assumed target object behavior. 
 
-Also, the project code contains various tasks, which are detailed step-by-step in the code. More information on the algorithm and on the tasks can be found in the Udacity classroom. 
+<img src="img/sf-project-diagram.png"/>
+
+The project code contains various tasks given by Udacity, which are detailed and implemented step-by-step in the code. 
 
 ## Project File Structure
 
@@ -64,10 +66,6 @@ Also, the project code contains various tasks, which are detailed step-by-step i
  ┣ requirements.txt <br>
  ┗ writeup.md <br>
 
-## Project Code Structure
-
-<img src="img/sf-project-diagram.png"/>
-
 ## Installation Instructions for Running Locally
 ### Cloning the Project
 In order to create a local copy of the project, please click on "Code" and then "Download ZIP". Alternatively, you may of-course use GitHub Desktop or Git Bash for this purpose. 
@@ -93,7 +91,6 @@ To download these files, you will have to register with Waymo Open Dataset first
 Once you have done so, please [click here](https://console.cloud.google.com/storage/browser/waymo_open_dataset_v_1_2_0_individual_files) to access the Google Cloud Container that holds all the sequences. Once you have been cleared for access by Waymo (which might take up to 48 hours), you can download the individual sequences. 
 
 The sequences listed above can be found in the folder "training". Please download them and put the `tfrecord`-files into the `dataset` folder of this project.
-
 
 ### Pre-Trained Models
 The object detection methods used in this project use pre-trained models which have been provided by the original authors. They can be downloaded [here](https://drive.google.com/file/d/1Pqx7sShlqKSGmvshTYbNDcUEYyZwfn3A/view?usp=sharing) (darknet) and [here](https://drive.google.com/file/d/1RcEfUIF1pzDZco8PJkZ10OL-wLL2usEj/view?usp=sharing) (fpn_resnet). Once downloaded, please copy the model files into the paths `/tools/objdet_models/darknet/pretrained` and `/tools/objdet_models/fpn_resnet/pretrained` respectively.
@@ -134,7 +131,6 @@ Parts of this project are based on the following repositories:
 - [Simple Waymo Open Dataset Reader](https://github.com/gdlg/simple-waymo-open-dataset-reader)
 - [Super Fast and Accurate 3D Object Detection based on 3D LiDAR Point Clouds](https://github.com/maudzung/SFA3D)
 - [Complex-YOLO: Real-time 3D Object Detection on Point Clouds](https://github.com/maudzung/Complex-YOLOv4-Pytorch)
-
 
 ## License
 [License](LICENSE.md)
