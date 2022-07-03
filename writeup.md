@@ -202,7 +202,7 @@ This implementation results in the multi-target-tracking results shown in the fo
 
 *Fig. 5.4.2: Final poses of multiple tracked object at frame 198 of sequence 1 (1005081002024129653_5313_150_5333_150), which partially occlude one another.*
 
-<img src="results/Step_4_my_tracking_results.gif" width="700" height="400" />
+<img src="results/Step_4_my_tracking_results.gif"/>
 
 *Fig. 5.4.3: Tracking video of multiple target objects over time on sequence 1 (1005081002024129653_5313_150_5333_150) for the frame ids 0...198 using extended Kalman filters and camera-lidar sensor fusion with gating and single nearest neighbor association based on smallest Mahalanobis distance.*
 
