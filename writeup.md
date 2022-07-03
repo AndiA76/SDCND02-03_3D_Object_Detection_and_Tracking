@@ -125,11 +125,11 @@ The performance evaluation results on frame id 50...150 of sequence 1 (100508100
 
 <img src="img/object_detection_performance_using_fpn_resnet_in_bev_map_frame50-150_ID_S4_EX1-3.png"/>
 
-*Fig. 4.1.1: 2D object detection performance in bird's eye view image using fpn_resent over frame IDs 50...150.*
+*Fig. 4.1.1: 2D object detection performance in bird's eye view image using fpn_resent for the frame ids 50...150.*
 
 <img src="img/object_detection_performance_using_ground_truth_objects_frame50-150_ID_S4_EX1-3.png"/>
 
-*Fig. 4.1.2: Plausibility check - 2D object detection performance in bird's eye view image using ground truth objects instead of object detections over frame IDs 50 ... 150, what should result in precision = 1.0 and recall = 1.0 if theare are no obvious bugs in the code.*
+*Fig. 4.1.2: Plausibility check - 2D object detection performance in bird's eye view image using ground truth objects instead of object detections for the frame ids 50 ... 150, what should result in precision = 1.0 and recall = 1.0 if theare are no obvious bugs in the code.*
 
 Figure 4.1.1 shows the 2D object detection performance evaluation results in bird's eye view image using fpn_resnet on frame 50 to 150. In order to plausibilize if the code produces reasonable results the experiment is repeated by setting 'configs_det.use_labels_as_objects = True', what makes the program use ground truth objects instead of object detections from a DNN model. This should result in 'precision = 1.0, recall = 1.0' if there are no obvious bugs. This is check is passed here as can be seedn from figure 4.1.2.
 
@@ -147,7 +147,7 @@ A description of all required steps can be found in the code involving the follo
 
 <img src="img/Step1_EKF_RMSE_plot.png"/>
 
-*Fig. 5.1.1: Tracking of a single target object over time on sequence 2 (10072231702153043603_5725_000_5745_000) frame ids 150...200 using an extended Kalman filter with a constant velocity model as inner model to represent target object motion behavior.*
+*Fig. 5.1.1: Tracking of a single target object over time on sequence 2 (10072231702153043603_5725_000_5745_000) for the frame ids 150...200 using an extended Kalman filter with a constant velocity model as inner model to represent target object motion behavior.*
 
 <img src="img/Step1_EKF_track_plot_final_pose.png"/>
 
@@ -161,7 +161,7 @@ A description of all required steps can be found in the code, s. [./student/trac
 
 <img src="img/Step2_single-object_trackmanagement_plot.png"/>
 
-*Fig. 5.2.1: Results of single-object track management on sequence 2 (10072231702153043603_5725_000_5745_000) frame ids 65...100.*
+*Fig. 5.2.1: Results of single-object track management on sequence 2 (10072231702153043603_5725_000_5745_000) for the frame ids 65...100.*
 
 Tracking single objects works as follows: After applying the track management to a new sequence (see instructions), the visualization shows that a new track is initialized automatically where unassigned measurements occur. The status of the track changes to 'tentative' if another measurement is associated with this track. The track is confirmed quickly if further incoming measurements are associated with it. It is deleted again after the tracked object has vanished from the visible range of the respective sensor. Fig. 5.2.1 shows one single track without track losses between the frames 65 to 100 of sequence 2. So single-object track management works as required.
 
@@ -173,19 +173,23 @@ A description of all required steps can be found in the code, s. [student/associ
 
 <img src="img/Step_3_Multi-Object_Tracking_Figure_1.png"/>
 
-*Fig. 5.3.1: Tracking of multiple target objects over time on sequence 1 (1005081002024129653_5313_150_5333_150) for the frame ids 0...198 using extended Kalman filters with gating and single nearest neighbor track-measurement association based on smallest Mahalanobis distance.*
+*Fig. 5.3.1: Final poses of the tracked objects at frame id 198 of sequence 1 (1005081002024129653_5313_150_5333_150).*
 
 <img src="img/Step_3_Multi-Object_Tracking_Figure_2.png"/>
 
-*Fig. 5.3.2: Final poses of the tracked objects at frame id 198 of sequence 1 (1005081002024129653_5313_150_5333_150).*
+*Fig. 5.3.2: Tracking of multiple target objects over time on sequence 1 (1005081002024129653_5313_150_5333_150) for the frame ids 0...198 using extended Kalman filters with gating and single nearest neighbor track-measurement association based on smallest Mahalanobis distance.*
 
-Fig. 5.3.1 shows multi-tracking results over time on sequence 1 for the frame ids 0...198. New objects appearing within the visible range are associated with the new track. Multiple tracks are updated iteratively with new measurements coming in. Fig. 5.3.2 shows the final pose with three tracked objets.
+Fig. 5.3.2 shows multi-tracking results over time on sequence 1 for the frame ids 0...198. New objects appearing within the visible range are associated with the new track. Multiple tracks are updated iteratively with new measurements coming in. Fig. 5.3.1 shows the final pose with three tracked objets. 
 
 The most difficult part of multi-target-tracking is the correct association of new measurements with existing object tracks in conflict situations. Conflict situations arise when multiple measurements (object detections) fall within a single gate, or when a single measurement falls within the gates of more than one target object track. Such ambiguous situations occur when multiple target objects are very close to one another crossing each others paths or when multiple target objects (partially) occlude one another. Such complex scenararios can likely to be encountered in real-life urban traffic situations where multple different traffic participants meet oin larger numbers at one place. In such situations there are usually multiple potential causes from which tracking errors may originate. Besides pure association errors of different nearby or partially or mutually occluded objects, we also need to take false positive or false negative detections of the respective object detectors into account, which can be very hard to detect online.
 
 Handling such non-trivial track-measurement-association tasks usually requires more sophisticated algorithms that are able to handle multiple track-measurement-association hypothesis at the same time also taking e.g. visual object properties like keypoint similarities, object sizes, object contours or even object behavior models into account. It also may help if the target objects can be observed from multiple perspectives with redundant sensors to make better decisions which measurement should be associated with which track. However, taking further target object properties besides probabilistic distances measurements into acount also leads to higher computational demands. In general, a reasonable compromise is needed in practice depending on the available computational resources.
 
 As an alternative, [global nearest neighbor (GNN) track-measurement association](https://stonesoup.readthedocs.io/en/latest/auto_tutorials/06_DataAssociation-MultiTargetTutorial.html) is implemented in this project, too. It is also a single-hypothesis track association method, which tries to find the globally optimal combination of all possible track-measurement associations within the gating limit that yields a minimum overall sum of Mahalanobis distances. Neglecting reduction of possible constellations to be considered due to gating, we have a computationally very costly problem with a computational complexity of O(n!) if we used a brute force approach to solve it. For such kind of problems to find the lowest-cost way to assign n jobs to n workers, we can use the [Hungarian Algorithm](https://en.wikipedia.org/wiki/Hungarian_algorithm). James Munkres could show that the original Hungarian algorithm behaves strictly polynomial with a complexity of O(n⁴). Therefore, it is also called Kuhn-Munkres algorithms. There was another optimization of the Kuhn-Munkres algorithm, which only has a complexity of O(n³). There exists a python package with an implementation of the [munkres algorithm](https://pypi.org/project/munkres3/), which has been used in this project, too.
+
+<img src="img/Step_3_Multi-Object_Tracking_Figure_2_GNN.png"/>
+
+*Fig. 5.3.3: Tracking of multiple target objects over time on sequence 1 (1005081002024129653_5313_150_5333_150) for the frame ids 0...198 using extended Kalman filters with gating and global nearest neighbor track-measurement association based on the smallest sum of Mahalanobis distances over all associated track-measurement pairs.*
 
 ### Step 4: Completion of Camera-Lidar Sensor Fusion
 In step 4, the restriction to use Lidar measurements only is removed, and sensor fusion is extended to using lidar and camera measurements alternatively. As this final part of the project focuses only on the sensor fusion part and not on object detection as such, object position measurements are simulated using ground truth object labels instead of predictions generated by trained object detectors for the sake of simplification and reduction of processing time. Measurement noise is added to the simulated measurements to make them more real-like. Only for the lidar sensor, a 3D object detector is implemented as a non-optimized example in the mid-term part of this project. It can be activated by configuration. As the camera measurements are not taken from an object detector but from ground truth object labels in vehicle coordinates, a nonlinear measurement function needs to be implemented, which transforms the ground truth object position into the camera coordinate system and then to pixel coordinates.
