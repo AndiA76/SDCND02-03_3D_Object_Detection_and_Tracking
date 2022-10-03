@@ -1,0 +1,4 @@
+# Ignore
+.ipynb_checkpoints
+.egg
+.egg-info

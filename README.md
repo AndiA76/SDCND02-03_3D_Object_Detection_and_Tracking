@@ -135,4 +135,8 @@ Parts of this project are based on the following repositories:
 - [Complex-YOLO: Real-time 3D Object Detection on Point Clouds](https://github.com/maudzung/Complex-YOLOv4-Pytorch) 
 
 ## License
-[License](LICENSE.md) 
+Remarks: Since the code in this repository was build on the [starter code](https://github.com/udacity/nd013-c2-fusion-starter) provided by Udacity, it automatically falls under the Udacity license, too:
+
+[License](./LICENSE.md) 
+
+This also applies to the changes, extensions or modifications implemented by the code owner, s. [CODEOWNERS](./CODEOWNERS).

@@ -2,6 +2,8 @@
 
 This is a simple file reader for the [Waymo Open Dataset](https://waymo.com/open/) which does not depend on TensorFlow and Bazel. The main goal is to be able to quickly integrate Waymo’s dataset with other deep learning frameworks without having to pull tons of dependencies. It does not aim to replace the [whole framework](https://github.com/waymo-research/waymo-open-dataset), especially the evaluation metrics that they provide.
 
+Original source: https://github.com/gdlg/simple-waymo-open-dataset-reader
+
 ## Installation
 
 Use the provided `setup.py`:
